@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { RiAddLine, RiPencilLine } from 'react-icons/ri'
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
@@ -36,15 +37,17 @@ const UserList: NextPage = () => {
         <Box flex="1" bg="gray.800" p="8" borderRadius={8}>
           <Flex mb="8" justify="space-between" align="center">
             <Heading size="lg" fontWeight="normal">Usuários</Heading>
-            <Button
-              as="a"
-              size="sm"
-              fontSize="sm"
-              bg="pink.500"
-              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-            >
-              Criar novo
-            </Button>
+            <Link href={"/users/create"} passHref>
+              <Button
+                as="a"
+                size="sm"
+                fontSize="sm"
+                bg="pink.500"
+                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+              >
+                Criar novo
+              </Button>
+            </Link>
           </Flex>
 
           <Table colorScheme="whiteAlpha">
