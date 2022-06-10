@@ -1,11 +1,31 @@
 import type { NextPage } from 'next'
-import {Box,Button,Checkbox,Flex,Heading,Icon,Table,Tbody,Td,Text,Th,Thead,Tr} from '@chakra-ui/react'
 import { RiAddLine, RiPencilLine } from 'react-icons/ri'
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
 import { Pagination } from '../../components/Pagination'
+import {
+  Box,
+  Button,
+  Checkbox,
+  Flex,
+  Heading,
+  Icon,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  useBreakpointValue
+} from '@chakra-ui/react'
 
 const UserList: NextPage = () => {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true
+  })
+
   return (
     <Box>
       <Header />
@@ -30,17 +50,17 @@ const UserList: NextPage = () => {
           <Table colorScheme="whiteAlpha">
             <Thead>
               <Tr>
-                <Th px="6" width="8" color="gray.300">
+                <Th px={["4", "4", "6"]} width="8" color="gray.300">
                   <Checkbox colorScheme="pink" />
                 </Th>
                 <Th>Usuários</Th>
-                <Th>Data de cadastro</Th>
+                  {isWideVersion && <Th>Data de cadastro</Th>}
                 <Th w="8"></Th>
               </Tr>
             </Thead>
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -49,23 +69,21 @@ const UserList: NextPage = () => {
                     <Text fontSize="small" color="gray.300">janedoe@mail.com</Text>
                   </Box>
                 </Td>
+                {isWideVersion && <Td>06 de Junho, 2022</Td>}
                 <Td>
-                  06/03/2022
-                </Td>
-                <Td>
-                <Button
-                  as="a"
-                  size="sm"
-                  fontSize="sm"
-                  bg="purple.500"
-                  leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                >
-                  Editar
-                </Button>
+                  <Button
+                    as="a"
+                    size="sm"
+                    fontSize="sm"
+                    bg="purple.500"
+                    leftIcon={isWideVersion ? <Icon as={RiPencilLine} fontSize="16" /> : undefined}
+                  >
+                    {isWideVersion ? 'Editar' : <Icon as={RiPencilLine} fontSize="16" />}
+                  </Button>
                 </Td>
               </Tr>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -74,23 +92,21 @@ const UserList: NextPage = () => {
                     <Text fontSize="small" color="gray.300">janedoe@mail.com</Text>
                   </Box>
                 </Td>
+                {isWideVersion && <Td>06 de Junho, 2022</Td>}
                 <Td>
-                  06/03/2022
-                </Td>
-                <Td>
-                <Button
-                  as="a"
-                  size="sm"
-                  fontSize="sm"
-                  bg="purple.500"
-                  leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                >
-                  Editar
-                </Button>
+                  <Button
+                    as="a"
+                    size="sm"
+                    fontSize="sm"
+                    bg="purple.500"
+                    leftIcon={isWideVersion ? <Icon as={RiPencilLine} fontSize="16" /> : undefined}
+                  >
+                    {isWideVersion ? 'Editar' : <Icon as={RiPencilLine} fontSize="16" />}
+                  </Button>
                 </Td>
               </Tr>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -99,19 +115,17 @@ const UserList: NextPage = () => {
                     <Text fontSize="small" color="gray.300">janedoe@mail.com</Text>
                   </Box>
                 </Td>
+                {isWideVersion && <Td>06 de Junho, 2022</Td>}
                 <Td>
-                  06/03/2022
-                </Td>
-                <Td>
-                <Button
-                  as="a"
-                  size="sm"
-                  fontSize="sm"
-                  bg="purple.500"
-                  leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                >
-                  Editar
-                </Button>
+                  <Button
+                    as="a"
+                    size="sm"
+                    fontSize="sm"
+                    bg="purple.500"
+                    leftIcon={isWideVersion ? <Icon as={RiPencilLine} fontSize="16" /> : undefined}
+                  >
+                    {isWideVersion ? 'Editar' : <Icon as={RiPencilLine} fontSize="16" />}
+                  </Button>
                 </Td>
               </Tr>
             </Tbody>
