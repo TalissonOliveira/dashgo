@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { RiAddLine, RiPencilLine } from 'react-icons/ri'
@@ -24,7 +25,8 @@ import {
 } from '@chakra-ui/react'
 
 const UserList: NextPage = () => {
-  const { data, isLoading, isFetching, error } = useUsers()
+  const [page, setPage] = useState(1)
+  const { data, isLoading, isFetching, error } = useUsers(page)
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -79,7 +81,7 @@ const UserList: NextPage = () => {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data?.map((user: any) => (
+                  {data?.users.map((user: any) => (
                     <Tr key={user.id}>
                       <Td px={["4", "4", "6"]}>
                         <Checkbox colorScheme="pink" />
@@ -107,9 +109,9 @@ const UserList: NextPage = () => {
                 </Tbody>
               </Table>
               <Pagination
-                totalCountOfRegisters={200}
-                currentPage={5}
-                onPagechange={() => {}}
+                totalCountOfRegisters={data.totalCount}
+                currentPage={page}
+                onPageChange={setPage}
               />
             </>
           )}
